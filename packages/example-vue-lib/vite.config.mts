@@ -33,7 +33,11 @@ export default defineConfig(({ mode }): UserConfig => {
           __DEV__: mode === 'production' ? 'false' : mode === 'development' ? 'true' : '!(process.env.NODE_ENV === "production")'
         }
       }),
-      vue(),
+      vue({
+        features: {
+          componentIdGenerator: 'filepath'
+        }
+      }),
       dtsPlugin
     ],
     resolve: {
