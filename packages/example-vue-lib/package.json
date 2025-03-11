@@ -1,0 +1,74 @@
+{
+  "name": "@skirtle/example-vue-lib",
+  "version": "0.0.0",
+  "author": "skirtle",
+  "license": "MIT",
+  "description": "Example library created with @skirtle/create-vue-lib",
+  "keywords": ["vue", "library", "scaffold", "vite", "build"],
+  "homepage": "https://github.com/skirtles-code/example-vue-lib",
+  "bugs": "https://github.com/skirtles-code/example-vue-lib/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skirtles-code/example-vue-lib.git"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/example-vue-lib.cjs",
+  "module": "dist/example-vue-lib.esm-bundler.prod.mjs",
+  "unpkg": "dist/example-vue-lib.global.dev.js",
+  "jsdelivr": "dist/example-vue-lib.global.dev.js",
+  "types": "dist/example-vue-lib.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/example-vue-lib.d.ts",
+      "import": {
+        "development": "./dist/example-vue-lib.esm.dev.mjs",
+        "default": "./dist/example-vue-lib.esm-bundler.prod.mjs"
+      },
+      "require": "./dist/example-vue-lib.cjs"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^6.0.2",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.13.9",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitest/coverage-v8": "^3.0.8",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.7.0",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "jsdom": "^26.0.0",
+    "npm-run-all2": "^7.0.2",
+    "publint": "^0.3.8",
+    "rimraf": "^5.0.1",
+    "typescript": "~5.8.0",
+    "vite": "^6.2.1",
+    "vite-plugin-dts": "^4.5.3",
+    "vitest": "^3.0.8",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.8"
+  },
+  "scripts": {
+    "clean:dist": "rimraf dist",
+    "clean": "rimraf dist coverage README.md",
+    "test:unit": "vitest --environment jsdom",
+    "coverage": "vitest run --coverage --environment jsdom",
+    "type-check": "vue-tsc --build",
+    "lint:package": "publint",
+    "build:copy": "copyfiles -f ../../README.md .",
+    "build:dev": "cross-env NODE_ENV=development vite build --mode development",
+    "build:neutral": "vite build --mode neutral",
+    "build:prod": "vite build --mode production",
+    "build": "run-s clean:dist build:* type-check lint:package"
+  }
+}
