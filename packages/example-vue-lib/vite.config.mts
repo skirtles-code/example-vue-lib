@@ -11,7 +11,7 @@ export default defineConfig(({ mode }): UserConfig => {
     throw new Error(`Unknown mode: ${mode}`)
   }
 
-  const expectedNodeEnv = mode === 'neutral' ? 'production' : mode
+  const expectedNodeEnv = mode === 'test' ? 'test' : 'production'
   const nodeEnv = process.env.NODE_ENV
 
   if (nodeEnv !== expectedNodeEnv) {
@@ -35,7 +35,8 @@ export default defineConfig(({ mode }): UserConfig => {
       }),
       vue({
         features: {
-          componentIdGenerator: 'filepath'
+          componentIdGenerator: 'filepath',
+          prodDevtools: mode === 'development'
         }
       }),
       dtsPlugin
