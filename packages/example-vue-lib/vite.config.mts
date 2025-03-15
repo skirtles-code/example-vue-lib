@@ -1,4 +1,3 @@
-import { resolve } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig, type UserConfig } from 'vite'
@@ -41,20 +40,24 @@ export default defineConfig(({ mode }): UserConfig => {
       }),
       dtsPlugin
     ],
+
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
+
     define: {
       __TEST__: mode === 'test'
     },
+
     build: {
       target: 'es2019',
       emptyOutDir: false,
       minify: mode === 'production',
+
       lib: {
-        entry: resolve(__dirname, 'src/index.ts'),
+        entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
         name: 'ExampleVueLib',
         formats: mode === 'neutral' ? ['cjs', 'es'] : ['es', 'iife'],
         cssFileName: mode === 'production' ? 'example-vue-lib.prod' : 'example-vue-lib',
@@ -92,6 +95,7 @@ export default defineConfig(({ mode }): UserConfig => {
           return `${name}.${extension}`
         }
       },
+
       rollupOptions: {
         external: ['vue'],
         output: {

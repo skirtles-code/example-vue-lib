@@ -12,6 +12,7 @@ export default defineConfig(({ mode }): UserConfig => ({
     vue(),
     vueDevTools()
   ],
+
   resolve: {
     alias: [
       {
@@ -29,9 +30,9 @@ export default defineConfig(({ mode }): UserConfig => ({
       }
     ]
   },
+
   define: {
     __DEV__: mode !== 'production',
     __TEST__: false
-
   }
 }))

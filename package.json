@@ -5,6 +5,21 @@
   "engines": {
     "node": ">=v18.3.0"
   },
+  "devDependencies": {
+    "@eslint/compat": "^1.2.7",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.9",
+    "@vitest/eslint-plugin": "^1.1.36",
+    "@vue/eslint-config-typescript": "^14.5.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-vue": "~10.0.0",
+    "jiti": "^2.4.2",
+    "lint-staged": "^15.4.3",
+    "npm-run-all2": "^7.0.2",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "~5.8.0"
+  },
   "scripts": {
     "clean": "pnpm run -r clean",
     "dev": "pnpm run --filter ./packages/playground -r dev",
@@ -27,20 +42,5 @@
   },
   "lint-staged": {
     "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --fix"
-  },
-  "devDependencies": {
-    "@eslint/compat": "^1.2.7",
-    "@stylistic/eslint-plugin": "^4.2.0",
-    "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.13.9",
-    "@vitest/eslint-plugin": "^1.1.36",
-    "@vue/eslint-config-typescript": "^14.5.0",
-    "eslint": "^9.21.0",
-    "eslint-plugin-vue": "~10.0.0",
-    "jiti": "^2.4.2",
-    "lint-staged": "^15.4.3",
-    "npm-run-all2": "^7.0.2",
-    "simple-git-hooks": "^2.11.1",
-    "typescript": "~5.8.0"
   }
 }

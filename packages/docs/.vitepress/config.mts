@@ -36,7 +36,6 @@ export default ({ mode }: { mode: string }) => defineConfigWithTheme({
     define: {
       __DEV__: mode !== 'production',
       __TEST__: false
-
     }
   },
 
