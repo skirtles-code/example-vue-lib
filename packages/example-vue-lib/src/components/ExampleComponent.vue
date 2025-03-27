@@ -2,8 +2,7 @@
 import { ref } from 'vue'
 
 if (__DEV__) {
-  console.log('dev: creating ExampleComponent')
-  console.log(`__TEST__: ${__TEST__}`)
+  console.log('[@skirtle/example-vue-lib] creating ExampleComponent')
 }
 
 const msg = ref('Hello world!')

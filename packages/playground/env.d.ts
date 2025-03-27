@@ -1,3 +1,3 @@
 /// <reference types="vite/client" />
 
-import '../example-vue-lib/src/global.d.ts'
+import '../example-vue-lib/env.d.ts'
