@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfigWithTheme } from 'vitepress'
 
 const librarySrc = fileURLToPath(new URL('../../example-vue-lib/src/', import.meta.url))
-const playgroundSrc = fileURLToPath(new URL('../src/', import.meta.url))
+const docsSrc = fileURLToPath(new URL('../src/', import.meta.url))
 
 export default ({ mode }: { mode: string }) => defineConfigWithTheme({
   srcDir: './src',
@@ -20,11 +20,13 @@ export default ({ mode }: { mode: string }) => defineConfigWithTheme({
         {
           find: '@',
           replacement: '@',
-          customResolver(source, importer) {
-            return source.replace(
+          customResolver(source, importer, options) {
+            const filePath = source.replace(
               /^@\//,
-              importer?.startsWith(librarySrc) ? librarySrc : playgroundSrc
+              importer?.startsWith(librarySrc) ? librarySrc : docsSrc
             )
+
+            return this.resolve(filePath, importer, options)
           }
         }, {
           find: '@skirtle/example-vue-lib',

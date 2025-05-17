@@ -10,6 +10,7 @@ import { ExampleComponent, MyPanel } from '@skirtle/example-vue-lib'
 
 # Introduction
 
+::: raw
 <ExampleComponent />
 
 <MyPanel title="Panel title" footer="Panel footer">
@@ -27,3 +28,4 @@ import { ExampleComponent, MyPanel } from '@skirtle/example-vue-lib'
 <MyPanel>
   No header or footer
 </MyPanel>
+:::
