@@ -1,3 +1,4 @@
+import { relative, sep as pathSeparator } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig, type UserConfig } from 'vite'
@@ -19,10 +20,14 @@ export default defineConfig(({ mode }): UserConfig => ({
         find: '@',
         replacement: '@',
         customResolver(source, importer, options) {
-          const filePath = source.replace(
-            /^@\//,
-            importer?.startsWith(librarySrc) ? librarySrc : playgroundSrc
-          )
+          let target = playgroundSrc
+
+          // If the importer is inside librarySrc we resolve @ to that path
+          if (importer && relative(importer, librarySrc).split(pathSeparator).every(p => p === '..')) {
+            target = librarySrc
+          }
+
+          const filePath = source.replace(/^@\//, target)
 
           return this.resolve(filePath, importer, options)
         }
